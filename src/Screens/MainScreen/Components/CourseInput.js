@@ -41,6 +41,9 @@ const styles = makeStyles((theme) => ({
     marginTop: "20px",
     color: "#447e36",
   },
+  cgpa:{
+    color: "#447e36",
+  }
 }));
 
 const CourseInput = () => {
@@ -59,8 +62,59 @@ const CourseInput = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     // console.log("chala",Number(credentials?.theory)+Number(credentials?.lab))
-    if( (Number(credentials?.theory)+Number(credentials?.lab)) <= 100 ){
-        addCourseMarks(credentials)
+    let score = Number(credentials?.theory)+Number(credentials?.lab)
+    let grade = ''
+    let point = 0
+
+    if( score <= 100 && score >=0 ){
+      if(score < 50 && score >=0 ){
+        grade = 'FAILS'
+        point= 0.0
+      }
+      else if(score >= 50 && score <=52 ){
+        grade = 'D'
+        point= 1.0
+      }
+      else if(score >= 53 && score <=56 ){
+        grade = 'D+'
+        point= 1.4
+      }
+      else if(score >= 57 && score <=60 ){
+        grade = 'C-'
+        point= 1.8
+      }
+      else if(score >= 61 && score <=63 ){
+        grade = 'C'
+        point= 2.0
+      }
+      else if(score >= 64 && score <=67 ){
+        grade = 'C+'
+        point= 2.4
+      }
+      else if(score >= 68 && score <=70 ){
+        grade = 'B-'
+        point= 2.8
+      }
+      else if(score >= 71 && score <=74 ){
+        grade = 'B'
+        point= 3.0
+      }
+      else if(score >= 75 && score <=79 ){
+        grade = 'B+'
+        point= 3.4
+      }
+      else if(score >= 80 && score <=84 ){
+        grade = 'A-'
+        point= 3.8
+      }
+      else if(score >= 85 && score <= 89 ){
+        grade = 'A'
+        point= 4.0
+      }else if(score >= 90 && score <=100 ){
+        grade = 'C+'
+        point= 4.0
+      }
+        addCourseMarks({...credentials,grade:grade,gpa:point})
         // setCredentials({
         //     code:"",
         //     title:"",
@@ -69,6 +123,16 @@ const CourseInput = () => {
         //     theory:0
         //   })
     }
+  };
+
+  const calGpa = (gpaArr, totalCrhs) => {
+    console.log(gpaArr,"arr")
+    let total = 0;
+    gpaArr.forEach((element) => {
+      total += element.gpa;
+    });
+    let gpa = (total * 3) / totalCrhs;
+    return `${gpa} CGPA`;
   };
 
   return (
@@ -100,6 +164,7 @@ const CourseInput = () => {
             <OutlinedInput
               type="text"
               required
+              disabled= {semisterData.length < 48?false:true}
               style={{
                 borderRadius: "10px",
                 height: "45px",
@@ -121,6 +186,7 @@ const CourseInput = () => {
             <OutlinedInput
               type="text"
               required
+              disabled= {semisterData.length < 48?false:true}
               style={{
                 borderRadius: "10px",
                 height: "45px",
@@ -142,6 +208,7 @@ const CourseInput = () => {
             <OutlinedInput
               type="text"
               required
+              disabled= {semisterData.length < 48?false:true}
               style={{
                 borderRadius: "10px",
                 height: "45px",
@@ -163,6 +230,7 @@ const CourseInput = () => {
             <OutlinedInput
               type="text"
               required
+              disabled= {semisterData.length < 48?false:true}
               style={{
                 borderRadius: "10px",
                 height: "45px",
@@ -184,6 +252,7 @@ const CourseInput = () => {
             <OutlinedInput
               type="text"
               required
+              disabled= {semisterData.length < 48?false:true}
               style={{
                 borderRadius: "10px",
                 height: "45px",
@@ -200,8 +269,18 @@ const CourseInput = () => {
           </Box>
         </Grid>
         <Grid item xs={12} className={classes.btnCntnr} >
-            <Button type="submit" variant="outlined" className={classes.addBtn} > Add</Button>
+        {
+          semisterData.length < 48 ?<Button type="submit" variant="outlined" className={classes.addBtn} > Add</Button>:
+          null
+        }
         </Grid>
+        {
+          semisterData.length == 48 && <Grid>
+            <Box py={3} >
+              <Typography variant="h5" className={classes.cgpa}>{calGpa(semisterData,144)} </Typography>
+            </Box>
+          </Grid>
+        }
       </Grid>
         </form>
     </div>
