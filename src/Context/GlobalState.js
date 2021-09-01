@@ -20,7 +20,7 @@ export const GlobalProvider = ({children}) =>{
     }
 
     function addCourseMarks(data){
-        console.log(data,"data")
+        console.log(data,"data from course")
         dispatch({
             type:"ADD_COURSE_INFO",
             payload : data

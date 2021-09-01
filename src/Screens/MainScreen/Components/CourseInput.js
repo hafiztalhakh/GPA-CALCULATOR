@@ -45,11 +45,35 @@ const styles = makeStyles((theme) => ({
 
 const CourseInput = () => {
   const classes = styles();
-  const { semisterData } = useContext(GlobalContext);
-  const [credentials, setCredentials] = useState();
-  //   ("Semister 3");
+  const { semisterData,addCourseMarks } = useContext(GlobalContext);
+  const [credentials, setCredentials] = useState({
+    code:"",
+    title:"",
+    crHours:"",
+    lab:"",
+    theory:""
+  });
+  
+  
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // console.log("chala",Number(credentials?.theory)+Number(credentials?.lab))
+    if( (Number(credentials?.theory)+Number(credentials?.lab)) <= 100 ){
+        addCourseMarks(credentials)
+        // setCredentials({
+        //     code:"",
+        //     title:"",
+        //     crHours:0,
+        //     lab:0,
+        //     theory:0
+        //   })
+    }
+  };
+
   return (
     <div>
+      <form onSubmit={onSubmit} >
       <Grid container>
         <Grid item xs={12}>
           <Typography variant="h3" className={classes.semisterHead}>
@@ -146,7 +170,7 @@ const CourseInput = () => {
               }}
               placeholder="Lab Marks"
               fullWidth
-              type="text"
+              type="number"
               value={credentials?.lab}
               onChange={(e) =>
                 setCredentials({ ...credentials, lab: e.target.value })
@@ -167,7 +191,7 @@ const CourseInput = () => {
               }}
               placeholder="Theory Marks"
               fullWidth
-              type="text"
+              type="number"
               value={credentials?.theory}
               onChange={(e) =>
                 setCredentials({ ...credentials, theory: e.target.value })
@@ -176,9 +200,10 @@ const CourseInput = () => {
           </Box>
         </Grid>
         <Grid item xs={12} className={classes.btnCntnr} >
-            <Button variant="outlined" className={classes.addBtn} > Add</Button>
+            <Button type="submit" variant="outlined" className={classes.addBtn} > Add</Button>
         </Grid>
       </Grid>
+        </form>
     </div>
   );
 };

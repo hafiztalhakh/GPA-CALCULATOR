@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import Dialog from "../../../Component/Dialog";
 import {
   Grid,
@@ -8,47 +8,47 @@ import {
   OutlinedInput,
   Button,
 } from "@material-ui/core";
-import { GlobalContext } from "../../../Context/GlobalState"
+import { GlobalContext } from "../../../Context/GlobalState";
 
 const styles = makeStyles((theme) => ({
   infoHead: {
     color: "#447E36",
     marginTop: "10px",
   },
-  submitBtn:{
-      float:"right",
-      marginTop:"20px",
-      marginRight:"10px",
-      backgroundColor:"#447E36",
-      color:"#ffff",
-      "&:hover": {
-        backgroundColor:"#447E36",
-      color:"#ffff",
+  submitBtn: {
+    float: "right",
+    marginTop: "20px",
+    marginRight: "10px",
+    backgroundColor: "#447E36",
+    color: "#ffff",
+    "&:hover": {
+      backgroundColor: "#447E36",
+      color: "#ffff",
     },
-  }
+  },
 }));
 
 const PersonalInfo = () => {
   const classes = styles();
   const [isOpen, setIsOpen] = useState(true);
-  const [credentials, setCredentials] = useState({})
+  const [credentials, setCredentials] = useState({});
 
-  const { addPersonaInfo }=useContext(GlobalContext)
+  const { addPersonaInfo } = useContext(GlobalContext);
 
   const hideDialogHandler = () => {
     // if(Object.keys(credentials).length  > 0){
-      setIsOpen(false)
-  // }
+    setIsOpen(false);
+    // }
   };
 
-  const onSubmit = e=>{
-    e.preventDefault()
+  const onSubmit = (e) => {
+    e.preventDefault();
     // console.log(credentials,"data")
-    addPersonaInfo(credentials)
-    if(Object.keys(credentials).length  > 0){
-        setIsOpen(false)
+    addPersonaInfo(credentials);
+    if (Object.keys(credentials).length > 0) {
+      setIsOpen(false);
     }
-}
+  };
 
   return (
     <div>
@@ -64,7 +64,7 @@ const PersonalInfo = () => {
           py={4}
           style={{ backgroundColor: "#FAFBFD", overflowY: "hidden" }}
         >
-          <form onSubmit={onSubmit} >
+          <form onSubmit={onSubmit}>
             <Grid container>
               <Grid item xs={12}>
                 <Typography className={classes.infoHead} variant="h3">
@@ -88,7 +88,12 @@ const PersonalInfo = () => {
                     fullWidth
                     type="text"
                     value={credentials?.program}
-                    onChange={ (e) => setCredentials({...credentials,program:e.target.value})}
+                    onChange={(e) =>
+                      setCredentials({
+                        ...credentials,
+                        program: e.target.value,
+                      })
+                    }
                   />
                 </Box>
               </Grid>
@@ -109,7 +114,9 @@ const PersonalInfo = () => {
                     fullWidth
                     type="number"
                     value={credentials?.year}
-                    onChange={ (e) => setCredentials({...credentials,year:e.target.value})}
+                    onChange={(e) =>
+                      setCredentials({ ...credentials, year: e.target.value })
+                    }
                   />
                 </Box>
               </Grid>
@@ -128,7 +135,12 @@ const PersonalInfo = () => {
                     fullWidth
                     type="text"
                     value={credentials?.department}
-                    onChange={ (e) => setCredentials({...credentials,department:e.target.value})}
+                    onChange={(e) =>
+                      setCredentials({
+                        ...credentials,
+                        department: e.target.value,
+                      })
+                    }
                   />
                 </Box>
               </Grid>
@@ -147,7 +159,9 @@ const PersonalInfo = () => {
                     fullWidth
                     type="text"
                     value={credentials?.name}
-                    onChange={ (e) => setCredentials({...credentials,name:e.target.value})}
+                    onChange={(e) =>
+                      setCredentials({ ...credentials, name: e.target.value })
+                    }
                   />
                 </Box>
               </Grid>
@@ -168,7 +182,12 @@ const PersonalInfo = () => {
                     fullWidth
                     type="text"
                     value={credentials?.fatherName}
-                    onChange={ (e) => setCredentials({...credentials,fatherName:e.target.value})}
+                    onChange={(e) =>
+                      setCredentials({
+                        ...credentials,
+                        fatherName: e.target.value,
+                      })
+                    }
                   />
                 </Box>
               </Grid>
@@ -187,12 +206,20 @@ const PersonalInfo = () => {
                     fullWidth
                     type="text"
                     value={credentials?.seatNo}
-                    onChange={ (e) => setCredentials({...credentials,seatNo:e.target.value})}
+                    onChange={(e) =>
+                      setCredentials({ ...credentials, seatNo: e.target.value })
+                    }
                   />
                 </Box>
               </Grid>
               <Grid item xs={12}>
-                  <Button variant="outlined" className={classes.submitBtn} type="submit" >Submit</Button>
+                <Button
+                  variant="outlined"
+                  className={classes.submitBtn}
+                  type="submit"
+                >
+                  Submit
+                </Button>
               </Grid>
             </Grid>
           </form>
