@@ -31,17 +31,19 @@ const styles = makeStyles((theme) => ({
 const PersonalInfo = () => {
   const classes = styles();
   const [isOpen, setIsOpen] = useState(true);
-  const [credentials, setCredentials] = useState()
+  const [credentials, setCredentials] = useState({})
 
   const { addPersonaInfo }=useContext(GlobalContext)
 
   const hideDialogHandler = () => {
-    setIsOpen(false);
+    // if(Object.keys(credentials).length  > 0){
+      setIsOpen(false)
+  // }
   };
 
   const onSubmit = e=>{
     e.preventDefault()
-    // console.log("checking")
+    // console.log(credentials,"data")
     addPersonaInfo(credentials)
     if(Object.keys(credentials).length  > 0){
         setIsOpen(false)

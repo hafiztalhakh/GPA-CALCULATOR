@@ -18,11 +18,21 @@ export const GlobalProvider = ({children}) =>{
             payload : data
         })
     }
+
+    function addCourseMarks(data){
+        console.log(data,"data")
+        dispatch({
+            type:"ADD_COURSE_INFO",
+            payload : data
+        })
+    }
+
     return(
         <GlobalContext.Provider value={{
             personalData:state.personalData,
             semisterData:state.semisterData,
             addPersonaInfo,
+            addCourseMarks,
         }}>
             {children}
         </GlobalContext.Provider>

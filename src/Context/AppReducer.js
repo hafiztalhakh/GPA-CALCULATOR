@@ -5,6 +5,11 @@ export default (state,action)=>{
                 ...state,
                 personalData:action.payload
             }
+        case "ADD_COURSE_INFO":
+            return{
+                ...state,
+                semisterData:[...state.semisterData,action.payload]
+            }
         default:
             return state;
     }
