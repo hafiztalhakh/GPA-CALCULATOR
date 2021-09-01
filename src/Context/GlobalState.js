@@ -3,7 +3,7 @@ import AppReducer from './AppReducer';
 
 const initialState = {
     personalData:{},
-    semisterData:{}
+    semisterData:[]
 }
 
 export const GlobalContext = createContext(initialState);
@@ -16,12 +16,6 @@ export const GlobalProvider = ({children}) =>{
         dispatch({
             type:"ADD_PERSONAL_INFO",
             payload : data
-        })
-    }
-    function addTransaction(transaction){
-        dispatch({
-            type:"ADD_TRANSACTION",
-            payload :transaction
         })
     }
     return(
