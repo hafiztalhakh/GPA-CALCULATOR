@@ -167,11 +167,17 @@ const GpaTable = () => {
                             {val?.crHours}
                           </TableCell>
                           <TableCell className={classes.tableCellBody}>
-                            {val?.lab}
-                          </TableCell>
-                          <TableCell className={classes.tableCellBody}>
-                            {val?.theory}
-                          </TableCell>
+                          {val?.lab || '-' }
+                        </TableCell>
+                        <TableCell className={classes.tableCellBody}>
+                          {val?.theory}
+                        </TableCell>
+                        <TableCell className={classes.tableCellBody}>
+                          {val?.grade}
+                        </TableCell>
+                        <TableCell className={classes.tableCellBody}>
+                          {val?.theory}
+                        </TableCell>
                         </TableRow>
                       </>
                     );
