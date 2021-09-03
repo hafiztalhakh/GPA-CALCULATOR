@@ -36,9 +36,9 @@ const PersonalInfo = () => {
   const { addPersonaInfo } = useContext(GlobalContext);
 
   const hideDialogHandler = () => {
-    // if(Object.keys(credentials).length  > 0){
+    if(Object.keys(credentials).length  > 0){
     setIsOpen(false);
-    // }
+    }
   };
 
   const onSubmit = (e) => {

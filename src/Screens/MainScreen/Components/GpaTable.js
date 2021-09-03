@@ -63,17 +63,10 @@ const GpaTable = (props) => {
   let {semisterArr,semister} = props;
   const { semisterData } = useContext(GlobalContext);
 
-  let firstSemister = semisterData?.slice(0, 6);
-  let secondSemister = semisterData?.slice(6, 12);
-  let thirdSemister = semisterData?.slice(12, 18);
-  let fourthSemister = semisterData?.slice(18, 24);
-  let fifthSemister = semisterData?.slice(24, 30);
-  let sixSemister = semisterData?.slice(30, 36);
-  let sevenSemister = semisterData?.slice(36, 42);
-  let eightSemister = semisterData?.slice(42, 48);
+  
 
   const calGpa = (gpaArr, totalCrhs) => {
-    console.log(gpaArr,"arr")
+    // console.log(gpaArr,"arr")
     let total = 0;
     gpaArr.forEach((element) => {
       total += element.gpa;
@@ -82,7 +75,6 @@ const GpaTable = (props) => {
     return `${gpa} GPA`;
   };
 
-  // console.log(firstSemister, "1", secondSemister, "2", thirdSemister, "3");
   return (
     <div>
       <Box>

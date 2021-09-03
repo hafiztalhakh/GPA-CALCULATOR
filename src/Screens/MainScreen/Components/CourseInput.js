@@ -129,7 +129,7 @@ const CourseInput = () => {
   };
 
   const calGpa = (gpaArr, totalCrhs) => {
-    console.log(gpaArr,"arr")
+    // console.log(gpaArr,"arr")
     let total = 0;
     gpaArr.forEach((element) => {
       total += element.gpa;
