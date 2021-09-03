@@ -12,6 +12,7 @@ import {
   Box,
   Chip,
   CircularProgress,
+  Typography,
 } from "@material-ui/core";
 import { GlobalContext } from "../../../Context/GlobalState";
 
@@ -51,10 +52,15 @@ const styles = makeStyles((theme) => ({
   gpa: {
     paddingLeft: "20px",
   },
+  semisterHead:{
+    color:"#447e36",
+    marginBottom:"10px"
+  }
 }));
 
-const GpaTable = () => {
+const GpaTable = (props) => {
   const classes = styles();
+  let {semisterArr,semister} = props;
   const { semisterData } = useContext(GlobalContext);
 
   let firstSemister = semisterData?.slice(0, 6);
@@ -76,13 +82,16 @@ const GpaTable = () => {
     return `${gpa} GPA`;
   };
 
-  console.log(firstSemister, "1", secondSemister, "2", thirdSemister, "3");
+  // console.log(firstSemister, "1", secondSemister, "2", thirdSemister, "3");
   return (
     <div>
       <Box>
         <Paper elevation={0} className={classes.rootTable}>
+        <Typography variant="h4" className={classes.semisterHead} >Semister {semister} </Typography>
           <TableContainer className={classes.tableContainer}>
-            <Table>
+            {semisterArr.length > 0 &&
+            <>
+             <Table>
               <TableHead>
                 <TableRow>
                   <TableCell className={classes.tableCell}>
@@ -107,8 +116,7 @@ const GpaTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {semisterData?.slice(0,48).map((val, i) => {
-                  if (i % 6 !== 0 || i == 0) {
+                {semisterArr.map((val, i) => {
                     return (
                       <TableRow className={classes.tableRow}>
                         <TableCell className={classes.tableCellBody}>
@@ -133,80 +141,19 @@ const GpaTable = () => {
                           {val?.gpa}
                         </TableCell>
                       </TableRow>
-                    );
-                  } else {
-                    return (
-                      <>
-                        <TableRow style={{ height: "20px" }}></TableRow>
-                        <TableRow className={classes.gpa}>
-                          {i == 6
-                            ? calGpa(firstSemister, 18)
-                            : (i == 12)
-                            ? calGpa(secondSemister, 18)
-                            : (i == 18)
-                            ? calGpa(thirdSemister, 18)
-                            : (i == 24)
-                            ? calGpa(fourthSemister, 18)
-                            : (i == 30)
-                            ? calGpa(fifthSemister, 18)
-                            : (i == 36)
-                            ? calGpa(sixSemister, 18)
-                            : (i == 42)
-                            ? calGpa(sevenSemister, 18)
-                            : calGpa(eightSemister, 18)}
-                        </TableRow>
-                        <TableRow style={{ height: "50px" }}></TableRow>
-                        <TableRow className={classes.lastTableRow}>
-                          <TableCell className={classes.tableCellBody}>
-                          {val?.code}
-                          </TableCell>
-                          <TableCell className={classes.tableCellBody}>
-                            {val?.title}
-                          </TableCell>
-                          <TableCell className={classes.tableCellBody}>
-                            {val?.crHours}
-                          </TableCell>
-                          <TableCell className={classes.tableCellBody}>
-                          {val?.lab || '-' }
-                        </TableCell>
-                        <TableCell className={classes.tableCellBody}>
-                          {val?.theory}
-                        </TableCell>
-                        <TableCell className={classes.tableCellBody}>
-                          {val?.total}
-                        </TableCell>
-                        <TableCell className={classes.tableCellBody}>
-                          {val?.gpa}
-                        </TableCell>
-                        </TableRow>
-                      </>
-                    );
-                  }
+                    )
                 })}
                 {
-                  semisterData.length >= 48 &&
+                  semisterArr.length == 6 &&
                   <>
                 <TableRow style={{ height: "20px" }}></TableRow>
-                <TableRow className={classes.gpa}>{calGpa(eightSemister, 18)}</TableRow>
+                <TableRow className={classes.gpa}>{calGpa(semisterArr, 18)}</TableRow>
                   </>
                 }
               </TableBody>
-              {/* {
-                  semisterData.map((val,i)=>{
-                      if((i+1)%6 == 0){
-                          return(
-                            <TableRow  className={classes.tableRow}>
-
-                            </TableRow>
-                          )
-                      }else{
-                          return(
-                              <h1>adad</h1>
-                          )
-                      }
-                  })
-              } */}
             </Table>
+            </>
+            }
           </TableContainer>
         </Paper>
       </Box>

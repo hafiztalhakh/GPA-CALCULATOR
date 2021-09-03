@@ -59,14 +59,17 @@ const CourseInput = () => {
   
   
 
+
   const onSubmit = (e) => {
     e.preventDefault();
     // console.log("chala",Number(credentials?.theory)+Number(credentials?.lab))
     let score = Number(credentials?.theory)+Number(credentials?.lab)
     let grade = ''
     let point = 0
+    
 
     if( score <= 100 && score >=0 ){
+
       if(score < 50 && score >=0 ){
         grade = 'FAILS'
         point= 0.0
@@ -115,13 +118,13 @@ const CourseInput = () => {
         point= 4.0
       }
         addCourseMarks({...credentials,grade:grade,gpa:point,total:score})
-        // setCredentials({
-        //     code:"",
-        //     title:"",
-        //     crHours:0,
-        //     lab:0,
-        //     theory:0
-        //   })
+        setCredentials({
+          code:"",
+          title:"",
+          crHours:"",
+          lab:0,
+          theory:""
+        })
     }
   };
 
