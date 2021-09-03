@@ -229,7 +229,6 @@ const CourseInput = () => {
             <Typography style={{ color: "gray" }}>Lab Marks</Typography>
             <OutlinedInput
               type="text"
-              required
               disabled= {semisterData.length < 48?false:true}
               style={{
                 borderRadius: "10px",
