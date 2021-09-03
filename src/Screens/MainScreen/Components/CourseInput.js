@@ -53,7 +53,7 @@ const CourseInput = () => {
     code:"",
     title:"",
     crHours:"",
-    lab:"",
+    lab:0,
     theory:""
   });
   
@@ -114,7 +114,7 @@ const CourseInput = () => {
         grade = 'A+'
         point= 4.0
       }
-        addCourseMarks({...credentials,grade:grade,gpa:point})
+        addCourseMarks({...credentials,grade:grade,gpa:point,total:score})
         // setCredentials({
         //     code:"",
         //     title:"",

@@ -99,7 +99,7 @@ const GpaTable = () => {
                     Theory Marks
                   </TableCell>
                   <TableCell className={classes.tableCell}>
-                    Alphabetic Grade
+                    Total Marks
                   </TableCell>
                   <TableCell className={classes.tableCell}>
                     Grade Point
@@ -127,7 +127,7 @@ const GpaTable = () => {
                           {val?.theory}
                         </TableCell>
                         <TableCell className={classes.tableCellBody}>
-                          {val?.grade}
+                          {val?.total}
                         </TableCell>
                         <TableCell className={classes.tableCellBody}>
                           {val?.gpa}
@@ -173,7 +173,7 @@ const GpaTable = () => {
                           {val?.theory}
                         </TableCell>
                         <TableCell className={classes.tableCellBody}>
-                          {val?.grade}
+                          {val?.total}
                         </TableCell>
                         <TableCell className={classes.tableCellBody}>
                           {val?.gpa}
