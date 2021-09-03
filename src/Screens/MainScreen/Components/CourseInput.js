@@ -111,7 +111,7 @@ const CourseInput = () => {
         grade = 'A'
         point= 4.0
       }else if(score >= 90 && score <=100 ){
-        grade = 'C+'
+        grade = 'A+'
         point= 4.0
       }
         addCourseMarks({...credentials,grade:grade,gpa:point})

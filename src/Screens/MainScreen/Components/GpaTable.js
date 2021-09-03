@@ -130,7 +130,7 @@ const GpaTable = () => {
                           {val?.grade}
                         </TableCell>
                         <TableCell className={classes.tableCellBody}>
-                          {val?.theory}
+                          {val?.gpa}
                         </TableCell>
                       </TableRow>
                     );
@@ -176,7 +176,7 @@ const GpaTable = () => {
                           {val?.grade}
                         </TableCell>
                         <TableCell className={classes.tableCellBody}>
-                          {val?.theory}
+                          {val?.gpa}
                         </TableCell>
                         </TableRow>
                       </>

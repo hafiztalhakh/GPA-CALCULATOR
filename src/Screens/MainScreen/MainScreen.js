@@ -13,26 +13,6 @@ const MainScreen = () => {
   const { semisterData } = useContext(GlobalContext);
   const [semister, setSemister] = useState('Semister 1')
 
-//   useEffect(() => {
-//     setSemister(
-//         semisterData.length < 6
-//             ? "Semister 1"
-//             : (semisterData.length >= 6 && semisterData.length) < 12
-//             ? "Semister 2"
-//             : (semisterData.length >= 12 && semisterData.length) < 18
-//             ? "Semister 3"
-//             : (semisterData.length >= 18 && semisterData.length) < 24
-//             ? "Semister 4"
-//             : (semisterData.length >= 24 && semisterData.length) < 30
-//             ? "Semister 5"
-//             : (semisterData.length >= 30 && semisterData.length) < 36
-//             ? "Semister 6"
-//             : (semisterData.length >= 36 && semisterData.length) < 42
-//             ? "Semister 7"
-//             : "Semister 8"
-//     )
-//   }, [semisterData])
-
   return (
     <div>
       <Header />
